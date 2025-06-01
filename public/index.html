@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Student Course Registration</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            text-align: center;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        header {
+            background-color: rgba(33, 150, 243, 0.85);
+            padding: 1.5em 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+
+        main {
+            flex: 1;
+            padding: 30px 20px;
+        }
+
+        #k {
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #f1f1f1;
+        }
+
+        nav {
+            margin: 40px auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav a {
+            padding: 14px 28px;
+            text-decoration: none;
+            color: #ffffff;
+            background: linear-gradient(to right, #1e88e5, #42a5f5);
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a:hover {
+            background: linear-gradient(to right, #1565c0, #2196f3);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ddd;
+            padding: 15px 0;
+            font-size: 1em;
+            text-align: center;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        footer strong {
+            color: #4FC3F7;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to the Student Course Registration</h1>
+    </header>
+
+    <main>
+        <p id="k">Register or log in to manage your courses</p>
+        <nav>
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
+            <a style="display: none;" id="kok" href="course.html">View Courses</a>
+            <a style="display: none;" id="ko" href="profile.html">Profile</a>
+        </nav>
+    </main>
+
+    <footer>
+        <p>Designed & Developed by <strong>Kerelus Elia</strong> © 2025</p>
+    </footer>
+
+    <script>
+
+        const resapi = async () => {
+            const res = await fetch('/check-session');
+            const data = await res.json();
+            if (data.id) {
+                let tar = document.getElementById("k");
+                tar.textContent = `Hello to your website`
+                let links = document.getElementsByTagName("a");
+                for (let a of links) {
+                    a.style.display = "none";
+                }
+                document.getElementById("kok").style.display = "inline";
+                document.getElementById("ko").style.display = "inline";
+            }
+
+        }
+        document.addEventListener("DOMContentLoaded", resapi);
+    </script>
+</body>
+
+</html>

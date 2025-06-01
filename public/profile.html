@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            color: #333;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .profile-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .profile-container h2 {
+            color: #1976D2;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .profile-container p {
+            margin: 12px 0;
+            font-size: 1.1em;
+        }
+
+        .profile-container strong {
+            color: #1976D2;
+        }
+
+        form {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            width: 150px;
+            padding: 12px;
+            background: linear-gradient(to right, #1e88e5, #42a5f5);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #1565c0, #2196f3);
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="profile-container">
+            <h2>Student Profile</h2>
+            <p><strong>Name:</strong> <span id="studentname"></span></p>
+            <p><strong>ID:</strong> <span id="id"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+
+            <form action="/logout" method="post">
+                <button type="submit">Logout</button>
+            </form>
+    <script>
+        const resapi = async () => {
+        try{
+            const res = await fetch('/check-session');
+            const data = await res.json();
+            if (data.id) {
+                document.getElementById("studentname").textContent = data.studentname;
+                document.getElementById("id").textContent = data.id;
+                document.getElementById("email").textContent = data.email;
+
+            }
+        }
+        catch(e){
+            console.error("can not load the profile now please try again" , e);
+        } 
+
+        }
+        document.addEventListener("DOMContentLoaded", resapi);
+    </script>
+</body>
+
+</html>

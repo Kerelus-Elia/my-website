@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Courses</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            max-width: 450px;
+            width: 100%;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1976D2;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        label {
+            flex: 1 1 45%;
+            background-color: #e0e0e0;
+            color: #333;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 1em;
+            cursor: pointer;
+            user-select: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        input[type="checkbox"]:checked + label {
+            background: linear-gradient(to right, #1e88e5, #42a5f5);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 136, 229, 0.7);
+            transform: scale(1.05);
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #1e88e5, #42a5f5);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(30, 136, 229, 0.7);
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #1565c0, #2196f3);
+            transform: scale(1.03);
+        }
+
+        /* Responsive */
+        @media (max-width: 400px) {
+            label {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Available Courses</h2>
+        <form id="course-form" action="/course" method="post">
+            <input type="checkbox" id="math" name="courses" value="Mathematics 101" />
+            <label for="math">Mathematics 101</label>
+
+            <input type="checkbox" id="programming" name="courses" value="Introduction to Programming" />
+            <label for="programming">Introduction to Programming</label>
+
+            <input type="checkbox" id="physics" name="courses" value="Physics for Engineers" />
+            <label for="physics">Physics for Engineers</label>
+
+            <input type="checkbox" id="english" name="courses" value="English Literature" />
+            <label for="english">English Literature</label>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+
+<script>
+  const form = document.getElementById('course-form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    let sub = confirm("Do you want submit ?") ;
+    if(sub){
+         alert('شكرًا لك على التسجيل! تم استلام طلبك بنجاح.');
+         window.location = "profile.html" ;
+         
+    }
+   
+  });
+</script>
+
+</html>
